@@ -14,10 +14,10 @@ include __DIR__."/../config/variables.php";
 include_once __DIR__."/../functions/bot.php";
 include_once __DIR__."/../functions/db.php";
 include_once __DIR__."/../functions/functions.php";
-include_once __DIR__."./curl.php";
+require_once("curl.php");
 
 ////////////====[MUTE]====////////////
-if(strpos($message, "/ss ") === 0 || strpos($message, "!ss ") === 0){   
+if(strpos($message, "/tx ") === 0 || strpos($message, "!tx ") === 0){   
     $antispam = antispamCheck($userId);
     addUser($userId);
     
@@ -52,13 +52,50 @@ if(strpos($message, "/ss ") === 0 || strpos($message, "!ss ") === 0){
         
 
             ###CHECKER PART###  
-            $zip = rand(10001,90045);
-            $time = rand(30000,699999);
-            $rand = rand(0,99999);
-            $pass = rand(0000000000,9999999999);
-            $email = substr(md5(mt_rand()), 0, 7);
-            $name = substr(md5(mt_rand()), 0, 7);
-            $last = substr(md5(mt_rand()), 0, 7);
+            function Apinames(){
+
+              $namesdir = "/namesfull.txt";
+              $ffname = fopen($namesdir, "r");
+              
+              
+              while(!feof($ffname)){
+                  $line = fgets($ffname);
+                  $array_t[] = $line;
+                  
+              }
+              return($array_t);
+             
+          }
+          function Apinames2(){
+          
+              $namesdir = "/lines.txt";
+              $ffname = fopen($namesdir, "r");
+              
+              
+              while(!feof($ffname)){
+                  $line = fgets($ffname);
+                  $array_t[] = $line;
+                  
+              }
+              return($array_t);
+             
+          }
+          
+          
+          $NAMES1 = Apinames2();
+          $NAMES = Apinames();
+          $Namegett = $NAMES[rand(0,110)];
+          $remplace_name = str_replace(" ","|",$Namegett);
+          $EXPNAME = explode("|", $remplace_name);
+          $name1 = trim($EXPNAME[0]);
+          $name2 = trim($EXPNAME[1]);
+          $line = trim($NAMES1[rand(0,40)]);
+          $state = "CA";
+          $zip = rand(90001, 90050);
+          $city = "Los Angeles";
+          $cad = "$name1$name2".rand(1,9000)."@gmail.com";
+          $Email1 = strtolower($cad);
+          $ph2 = rand(91355550199, 9155551999);
 
             $Vyper = new Vyper();
 
