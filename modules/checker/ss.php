@@ -14,7 +14,7 @@ include __DIR__."/../config/variables.php";
 include_once __DIR__."/../functions/bot.php";
 include_once __DIR__."/../functions/db.php";
 include_once __DIR__."/../functions/functions.php";
-require_once("curl.php");
+include_once __DIR__."./curl.php";
 
 ////////////====[MUTE]====////////////
 if(strpos($message, "/ss ") === 0 || strpos($message, "!ss ") === 0){   
@@ -156,7 +156,7 @@ $Vyper->close();
                 'text'=>"<b>Card:</b> <code>$lista</code>
 <b>Status -» INVALID SECURITY CODE CCN CARD ✅
 Response -» Approved
-Gateway -» Gateway TX
+Gateway -» Gateway TX  
 Time -» <b>$time</b><b>s</b>
 
 ------- Bin Info -------</b>
@@ -206,7 +206,7 @@ Time -» <b>$time</b><b>s</b>
                 'text'=>"<b>Card:</b> <code>$lista</code>
 <b>Status -» Dead ❌
 Response -» Dead Card Invalid
-Gateway -» Stripe Auth 1
+Gateway -» Gateway TX $result
 Time -» <b>$time</b><b>s</b>
 
 ------- Bin Info -------</b>
