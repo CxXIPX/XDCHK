@@ -18,19 +18,7 @@ require_once("curl.php");
 
 ////////////====[MUTE]====////////////
 if(strpos($message, "/tx ") === 0 || strpos($message, "!tx ") === 0){   
-    $antispam = antispamCheck($userId);
-    addUser($userId);
-    
-    if($antispam != False){
-      bot('sendmessage',[
-        'chat_id'=>$chat_id,
-        'text'=>"[<u>ANTI SPAM</u>] Intente mas tarde asaroso<b>$antispam</b>s.",
-        'parse_mode'=>'html',
-        'reply_to_message_id'=> $message_id
-      ]);
-      return;
 
-    }else{
         $messageidtoedit1 = bot('sendmessage',[
           'chat_id'=>$chat_id,
           'text'=>"<b>Procesando tarjeta espere unos segundos....</b>",
@@ -273,7 +261,5 @@ Time -» <b>$time</b><b>s</b>
           ]);
       }
     }
-}
-
-
+                                                              
 ?>
